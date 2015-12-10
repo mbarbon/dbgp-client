@@ -9,8 +9,10 @@ lib/DBGp/Client/Response/BreakpointList.pm
 lib/DBGp/Client/Response/BreakpointRemove.pm
 lib/DBGp/Client/Response/BreakpointSet.pm
 lib/DBGp/Client/Response/ContextGet.pm
+lib/DBGp/Client/Response/ContextNames.pm
 lib/DBGp/Client/Response/Error.pm
 lib/DBGp/Client/Response/Eval.pm
+lib/DBGp/Client/Response/FeatureSet.pm
 lib/DBGp/Client/Response/Init.pm
 lib/DBGp/Client/Response/Property.pm
 lib/DBGp/Client/Response/Simple.pm
@@ -24,7 +26,9 @@ META.json
 t/001_load.t
 t/200_parse_init.t
 t/205_parse_error.t
+t/207_parse_feature.t
 t/215_parse_step.t
+t/220_parse_context_names.t
 t/225_parse_context_get.t
 t/230_parse_stack_get.t
 t/240_parse_breakpoint_change.t

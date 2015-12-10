@@ -12,10 +12,12 @@ use DBGp::Client::Response::Step;
 use DBGp::Client::Response::StackGet;
 use DBGp::Client::Response::Eval;
 use DBGp::Client::Response::Typemap;
+use DBGp::Client::Response::ContextNames;
 use DBGp::Client::Response::ContextGet;
 use DBGp::Client::Response::BreakpointSet;
 use DBGp::Client::Response::BreakpointRemove;
 use DBGp::Client::Response::BreakpointList;
+use DBGp::Client::Response::FeatureSet;
 
 my $parser = XML::Parser->new(Style => 'EasyTree');
 
@@ -69,6 +71,8 @@ sub parse {
             return bless $root, 'DBGp::Client::Response::Eval';
         } elsif ($cmd eq 'typemap_get') {
             return bless $root, 'DBGp::Client::Response::Typemap';
+        } elsif ($cmd eq 'context_names') {
+            return bless $root, 'DBGp::Client::Response::ContextNames';
         } elsif ($cmd eq 'context_get') {
             return bless $root, 'DBGp::Client::Response::ContextGet';
         } elsif ($cmd eq 'breakpoint_set') {
@@ -77,6 +81,8 @@ sub parse {
             return bless $root, 'DBGp::Client::Response::BreakpointRemove';
         } elsif ($cmd eq 'breakpoint_list') {
             return bless $root, 'DBGp::Client::Response::BreakpointList';
+        } elsif ($cmd eq 'feature_set') {
+            return bless $root, 'DBGp::Client::Response::FeatureSet';
         } else {
             require Data::Dumper;
 
