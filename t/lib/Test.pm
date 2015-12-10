@@ -50,9 +50,10 @@ sub _extract_command_data {
     } elsif (ref $expected eq 'ARRAY') {
         return $res if ref $res ne 'ARRAY';
         return [
-            map {
+            ( map {
                 _extract_command_data($res->[$_], $expected->[$_])
-            } 0 .. $#$expected
+            } 0 .. $#$expected ),
+            ( ("<unexpected item>") x ($#$res - $#$expected) ),
         ];
     } else {
         die "Can't extract ", ref $expected, "value";
