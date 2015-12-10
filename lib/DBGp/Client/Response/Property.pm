@@ -7,7 +7,7 @@ use parent qw(DBGp::Client::Response::Simple);
 use MIME::Base64 qw(decode_base64);
 
 __PACKAGE__->make_attrib_accessors(qw(
-    name fullname constant type children
+    name fullname constant type children address pagesize page classname key facet
 ));
 
 sub numchildren { $_[0]->{attrib}{children} ? $_[0]->{attrib}{numchildren} : 0 }

@@ -7,7 +7,7 @@ use parent qw(DBGp::Client::Response::Simple);
 use DBGp::Client::Response::Property;
 
 __PACKAGE__->make_attrib_accessors(qw(
-    transaction_id command context
+    transaction_id command context_id
 ));
 
 sub values {

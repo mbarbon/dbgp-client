@@ -25,5 +25,9 @@ t/001_load.t
 t/200_parse_init.t
 t/205_parse_error.t
 t/215_parse_step.t
+t/225_parse_context_get.t
+t/230_parse_stack_get.t
 t/240_parse_breakpoint_change.t
+t/245_parse_breakpoint_list.t
+t/255_parse_typemap.t
 t/lib/Test.pm

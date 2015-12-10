@@ -22,4 +22,6 @@ __PACKAGE__->make_accessors(qw(
     level type filename where lineno
 ));
 
+# TODO cmdbegin cmdend
+
 1;
