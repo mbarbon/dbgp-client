@@ -1,5 +1,9 @@
 Revision history for DBGp-Client
 
+0.02      2015-12-11 09:59:34 CET
+
+    - Add option to listen on an Unix-domain socket
+
 0.01      2015-12-11 09:29:42 CET
 
     - First public release
