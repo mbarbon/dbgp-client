@@ -11,8 +11,11 @@ sub new {
     my ($class, %args) = @_;
     my $self = bless {
         port    => $args{port},
+        path    => $args{path},
         socket  => undef,
     }, $class;
+
+    die "Specify either 'port' or 'path'" unless $self->{port} || $self->{path};
 
     return $self;
 }
@@ -20,14 +23,26 @@ sub new {
 sub listen {
     my ($self) = @_;
 
-    $self->{socket} = IO::Socket::INET->new(
-        Listen    => 1,
-        LocalAddr => '127.0.0.1',
-        LocalPort => $self->{port},
-        Proto     => 'tcp',
-        ReuseAddr => 1,
-        ReusePort => 1,
-    );
+    if ($self->{port}) {
+        $self->{socket} = IO::Socket::INET->new(
+            Listen    => 1,
+            LocalAddr => '127.0.0.1',
+            LocalPort => $self->{port},
+            Proto     => 'tcp',
+            ReuseAddr => 1,
+            ReusePort => 1,
+        );
+    } elsif ($self->{path}) {
+        if (-S $self->{path}) {
+            unlink $self->{path} or die "Unable to unlink stale socket: $!";
+        }
+
+        $self->{socket} = IO::Socket::UNIX->new(
+            Listen    => 1,
+            Local     => $self->{path},
+        );
+    }
+
     die "Unable to start listening: $!" unless $self->{socket};
 }
 
