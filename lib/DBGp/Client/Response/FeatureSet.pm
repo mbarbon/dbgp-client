@@ -8,6 +8,9 @@ __PACKAGE__->make_attrib_accessors(qw(
     transaction_id command success
 ));
 
-sub feature { $_[0]->{attrib}{feature} // $_[0]->{attrib}{feature_name} }
+sub feature {
+    defined $_[0]->{attrib}{feature} ? $_[0]->{attrib}{feature} :
+                                       $_[0]->{attrib}{feature_name}
+}
 
 1;
