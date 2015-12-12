@@ -1,4 +1,3 @@
-Build.PL
 Changes
 lib/DBGp/Client.pm
 lib/DBGp/Client/Connection.pm
@@ -20,6 +19,7 @@ lib/DBGp/Client/Response/StackGet.pm
 lib/DBGp/Client/Response/Step.pm
 lib/DBGp/Client/Response/Typemap.pm
 lib/DBGp/Client/Stream.pm
+Makefile.PL
 MANIFEST
 META.yml
 META.json

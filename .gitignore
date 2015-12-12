@@ -1,7 +1,7 @@
-/Build
+/Makefile
 /MANIFEST.SKIP.bak
-/blib/
-/_build/
 /MYMETA.*
 /META.*
+/blib/
+/pm_to_blib
 /DBGp-Client*
