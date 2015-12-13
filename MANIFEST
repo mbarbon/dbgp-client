@@ -3,6 +3,7 @@ lib/DBGp/Client.pm
 lib/DBGp/Client/Connection.pm
 lib/DBGp/Client/Listener.pm
 lib/DBGp/Client/Parser.pm
+lib/DBGp/Client/Response.pod
 lib/DBGp/Client/Response/Breakpoint.pm
 lib/DBGp/Client/Response/BreakpointList.pm
 lib/DBGp/Client/Response/BreakpointRemove.pm

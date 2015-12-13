@@ -1,0 +1,213 @@
+=head1 NAME
+
+DBGp::Client::Response - documentation for DBGp response objects
+
+=head1 DESCRIPTION
+
+Brief description of all possible response objects; they are thin
+wrappers around the XML returned by the DBGp client, you should refer
+to the L<DBGp protocol specification|http://xdebug.org/docs-dbgp.php>
+for the meaning of the various values.
+
+Unless specified, the values returned by the various accessors is the
+raw value provided by the debugger.
+
+All responses, except for L</init> have C<transaction_id> and
+C<command> accessors.
+
+All response objects have an C<is_error> accessor, which only returns
+true for L<error> responses.
+
+=head1 RESPONSES
+
+=head2 init
+
+Implemented by C<DBGp::Client::Response::Init>. See also
+L<connection initialization|http://xdebug.org/docs-dbgp.php#connection-initialization>
+in the DBGp spec.
+
+Accessors:
+
+=over 4
+
+=item fileuri
+
+=item parent
+
+=item idekey
+
+=item thread
+
+=item appid
+
+=item protocol_version
+
+=item hostname
+
+=item language
+
+=back
+
+=head2 error
+
+Implemented by C<DBGp::Client::Response::Error>. See also
+L<debugger engine errors|http://xdebug.org/docs-dbgp.php#debugger-engine-errors>
+in the DBGp spec.
+
+Accessors:
+
+=over 4
+
+=item code
+
+=item apperr
+
+=item message
+
+=back
+
+=head2 feature_set
+
+Implemented by C<DBGp::Client::Response::FeatureSet>. See also
+L<feature_set|http://xdebug.org/docs-dbgp.php#feature-set>
+in the DBGp spec.
+
+Accessors:
+
+=over 4
+
+=item success
+
+=item feature
+
+=back
+
+=head2 run, step_into, step_over, step_out, stop,detach
+
+Implemented by C<DBGp::Client::Response::Step>. See also
+L<continuation commands|http://xdebug.org/docs-dbgp.php#continuation-commands> in the
+DBGp spec.
+
+Accessors:
+
+=over 4
+
+=item reason
+
+=item status
+
+=item filename
+
+Might or might not be present (Xdebug extension not in the specification)
+
+=item lineno
+
+Might or might not be present (Xdebug extension not in the specification)
+
+=back
+
+=cut
+
+# TODO: breakpoint_set, breakpoint_remove, breakpoint_list, stack_get, context_names, context_get, typemap_get
+
+# TODO: eval
+
+=head1 OTHER OBJECTS
+
+Lists other objects that are part of the response object structure but
+are not response objects.
+
+=head2 breakpoint
+
+Implemented by C<DBGp::Client::Response::Breakpoint>. See also
+L<breakpoints|http://xdebug.org/docs-dbgp.php#breakpoints>
+in the DBGp spec.
+
+Accessors:
+
+=over 4
+
+=item id
+
+=item type
+
+=item state
+
+=item filename
+
+=item lineno
+
+=item function
+
+=item exception
+
+=item hit_value
+
+=item hit_condition
+
+=item hit_count
+
+=item expression
+
+=back
+
+=head2 property
+
+Implemented by C<DBGp::Client::Response::Property>. See also
+L<properties, variables and values|http://xdebug.org/docs-dbgp.php#properties-variables-and-values>
+in the DBGp spec.
+
+Accessors:
+
+=over 4
+
+=item name
+
+=item fullname
+
+=item constant
+
+=item type
+
+=item children
+
+=item address
+
+=item pagesize
+
+=item page
+
+=item classname
+
+=item key
+
+=item facet
+
+=item numchildren
+
+It always returns C<0> unless C<children> is true
+
+=item value
+
+The decoded value of scalar properties (typically useful when
+C<children> is false).
+
+=item childs
+
+Array of C<DBGp::Client::Response::Property> objects. Returns an empty
+array unless C<children> is true).
+
+=back
+
+=head1 AUTHOR
+
+Mattia Barbon <mbarbon@cpan.org>
+
+=head1 LICENSE
+
+Copyright (c) 2015 Mattia Barbon. All rights reserved.
+
+This library is free software; you can redistribute it and/or modify it
+under the same terms as Perl itself.
+
+=cut
