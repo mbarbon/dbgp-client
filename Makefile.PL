@@ -39,6 +39,18 @@ WriteMakefile(
     ( $mm_ver >= 6.46 ?
       ( META_MERGE  => {
           "meta-spec" => { version => 2 },
+          resources   => {
+              license     => [ 'http://dev.perl.org/licenses/' ],
+#              homepage    => 'https://github.com/mbarbon/dbgp-client',
+              bugtracker  => {
+                  web    => 'https://github.com/mbarbon/dbgp-client/issues',
+              },
+              repository  => {
+                  url  => 'git@github.com:mbarbon/dbgp-client.git',
+                  web  => 'https://github.com/mbarbon/dbgp-client',
+                  type => 'git',
+              },
+          },
         },
       ) : () ),
 );
