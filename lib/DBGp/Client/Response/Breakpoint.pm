@@ -5,8 +5,6 @@ use warnings;
 
 use parent qw(DBGp::Client::Response::Simple);
 
-use MIME::Base64 qw(decode_base64);
-
 __PACKAGE__->make_attrib_accessors(qw(
     id type state filename lineno function exception
     hit_value hit_condition hit_count
