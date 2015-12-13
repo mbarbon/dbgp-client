@@ -1,5 +1,10 @@
 Revision history for DBGp-Client
 
+0.03      2015-12-13 22:22:21 CET
+
+    - Perl 5.6 compatibility
+    - Added basic documentation
+
 0.02      2015-12-11 09:59:34 CET
 
     - Add option to listen on an Unix-domain socket
