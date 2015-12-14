@@ -49,6 +49,8 @@ sub parse {
     return undef unless defined $_[0];
 
     my $tree = $parser->parse($_[0]);
+    require Data::Dumper, die "Unexpected return value from parse(): ", Data::Dumper::Dumper($tree)
+        if !ref $tree || ref $tree ne 'ARRAY';
     die "Unexpected XML"
         if @$tree != 1 || $tree->[0]{type} ne 'e';
 
