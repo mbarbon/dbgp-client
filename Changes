@@ -1,5 +1,9 @@
 Revision history for DBGp-Client
 
+0.05      2015-12-15 08:25:49 CET
+
+    - Fix for the case when XML::Parser::Style::EasyTree is installed
+
 0.04      2015-12-14 09:51:16 CET
 
     - Better diagnostics in case of parse error
