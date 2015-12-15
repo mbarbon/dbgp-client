@@ -19,7 +19,7 @@ use DBGp::Client::Response::BreakpointRemove;
 use DBGp::Client::Response::BreakpointList;
 use DBGp::Client::Response::FeatureSet;
 
-my $parser = XML::Parser->new(Style => 'EasyTree');
+my $parser = XML::Parser->new(Style => 'XML::Parser::EasyTree');
 
 sub _nodes {
     my ($nodes, $node) = @_;
