@@ -8,18 +8,34 @@ use XML::Parser::EasyTree;
 
 use DBGp::Client::Response::Init;
 use DBGp::Client::Response::Error;
-use DBGp::Client::Response::Step;
-use DBGp::Client::Response::StackGet;
-use DBGp::Client::Response::Eval;
-use DBGp::Client::Response::Typemap;
-use DBGp::Client::Response::ContextNames;
-use DBGp::Client::Response::ContextGet;
-use DBGp::Client::Response::BreakpointSet;
-use DBGp::Client::Response::BreakpointRemove;
-use DBGp::Client::Response::BreakpointList;
-use DBGp::Client::Response::FeatureSet;
 
 my $parser = XML::Parser->new(Style => 'XML::Parser::EasyTree');
+
+my %response_map;
+BEGIN {
+    %response_map = (
+        'step_into'         => 'DBGp::Client::Response::Step',
+        'step_over'         => 'DBGp::Client::Response::Step',
+        'run'               => 'DBGp::Client::Response::Step',
+        'step_out'          => 'DBGp::Client::Response::Step',
+        'detach'            => 'DBGp::Client::Response::Step',
+        'stop'              => 'DBGp::Client::Response::Step',
+        'stack_get'         => 'DBGp::Client::Response::StackGet',
+        'eval'              => 'DBGp::Client::Response::Eval',
+        'typemap_get'       => 'DBGp::Client::Response::Typemap',
+        'context_names'     => 'DBGp::Client::Response::ContextNames',
+        'context_get'       => 'DBGp::Client::Response::ContextGet',
+        'breakpoint_set'    => 'DBGp::Client::Response::BreakpointSet',
+        'breakpoint_remove' => 'DBGp::Client::Response::BreakpointRemove',
+        'breakpoint_list'   => 'DBGp::Client::Response::BreakpointList',
+        'feature_set'       => 'DBGp::Client::Response::FeatureSet',
+    );
+
+    my $load = join "\n", map "require $_;", values %response_map;
+    eval $load or do {
+        die "$@";
+    };
+}
 
 sub _nodes {
     my ($nodes, $node) = @_;
@@ -63,28 +79,8 @@ sub parse {
         }
 
         my $cmd = $root->{attrib}{command};
-
-        if ($cmd eq 'step_into' || $cmd eq 'step_over' || $cmd eq 'run' ||
-                $cmd eq 'step_out' || $cmd eq 'detach' || $cmd eq 'stop') {
-            return bless $root, 'DBGp::Client::Response::Step';
-        } elsif ($cmd eq 'stack_get') {
-            return bless $root, 'DBGp::Client::Response::StackGet';
-        } elsif ($cmd eq 'eval') {
-            return bless $root, 'DBGp::Client::Response::Eval';
-        } elsif ($cmd eq 'typemap_get') {
-            return bless $root, 'DBGp::Client::Response::Typemap';
-        } elsif ($cmd eq 'context_names') {
-            return bless $root, 'DBGp::Client::Response::ContextNames';
-        } elsif ($cmd eq 'context_get') {
-            return bless $root, 'DBGp::Client::Response::ContextGet';
-        } elsif ($cmd eq 'breakpoint_set') {
-            return bless $root, 'DBGp::Client::Response::BreakpointSet';
-        } elsif ($cmd eq 'breakpoint_remove') {
-            return bless $root, 'DBGp::Client::Response::BreakpointRemove';
-        } elsif ($cmd eq 'breakpoint_list') {
-            return bless $root, 'DBGp::Client::Response::BreakpointList';
-        } elsif ($cmd eq 'feature_set') {
-            return bless $root, 'DBGp::Client::Response::FeatureSet';
+        if (my $package = $response_map{$cmd}) {
+            return bless $root, $package;
         } else {
             require Data::Dumper;
 
