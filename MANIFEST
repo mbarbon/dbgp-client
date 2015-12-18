@@ -5,8 +5,8 @@ lib/DBGp/Client/Listener.pm
 lib/DBGp/Client/Parser.pm
 lib/DBGp/Client/Response.pod
 lib/DBGp/Client/Response/Breakpoint.pm
+lib/DBGp/Client/Response/BreakpointGetUpdateRemove.pm
 lib/DBGp/Client/Response/BreakpointList.pm
-lib/DBGp/Client/Response/BreakpointRemove.pm
 lib/DBGp/Client/Response/BreakpointSet.pm
 lib/DBGp/Client/Response/ContextGet.pm
 lib/DBGp/Client/Response/ContextNames.pm

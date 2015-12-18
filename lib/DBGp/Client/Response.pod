@@ -124,9 +124,89 @@ Might or might not be present (Xdebug extension not in the specification)
 
 =back
 
+=head2 breakpoint_set
+
+Implemented by C<DBGp::Client::Response::BreakpointSet>. See also
+L<breakpoint_set|http://xdebug.org/docs-dbgp.php#id1> in the
+DBGp spec.
+
+Accessors:
+
+=over 4
+
+=item state
+
+=item id
+
+=back
+
+=head2 breakpoint_get
+
+Implemented by C<DBGp::Client::Response::BreakpointGetUpdateRemove>. See also
+L<breakpoint_get|http://xdebug.org/docs-dbgp.php#id2> in the
+DBGp spec.
+
+Accessors:
+
+=over 4
+
+=item breakpoint
+
+A L</breakpoint> object (see below).
+
+=back
+
+=head2 breakpoint_update
+
+Implemented by C<DBGp::Client::Response::BreakpointGetUpdateRemove>. See also
+L<breakpoint_get|http://xdebug.org/docs-dbgp.php#id3> in the
+DBGp spec.
+
+Accessors:
+
+=over 4
+
+=item breakpoint
+
+(Optional) A L</breakpoint> object (see below). Not documented in the DBGp spec.
+
+=back
+
+=head2 breakpoint_remove
+
+Implemented by C<DBGp::Client::Response::BreakpointGetUpdateRemove>. See also
+L<breakpoint_remove|http://xdebug.org/docs-dbgp.php#id4> in the
+DBGp spec.
+
+Accessors:
+
+=over 4
+
+=item breakpoint
+
+(Optional) A L</breakpoint> object (see below).
+
+=back
+
+=head2 breakpoint_list
+
+Implemented by C<DBGp::Client::Response::BreakpointList>. See also
+L<breakpoint_list|http://xdebug.org/docs-dbgp.php#id5> in the
+DBGp spec.
+
+Accessors:
+
+=over 4
+
+=item breakpoints
+
+An array of L</breakpoint> objects (see below).
+
+=back
+
 =cut
 
-# TODO: breakpoint_set, breakpoint_remove, breakpoint_list, stack_get, context_names, context_get, typemap_get
+# TODO: stack_get, context_names, context_get, typemap_get
 
 # TODO: eval
 
