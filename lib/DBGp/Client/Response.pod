@@ -66,6 +66,24 @@ Accessors:
 
 =back
 
+=head2 feature_get
+
+Implemented by C<DBGp::Client::Response::FeatureGet>. See also
+L<feature_get|http://xdebug.org/docs-dbgp.php#feature-get>
+in the DBGp spec.
+
+Accessors:
+
+=over 4
+
+=item supported
+
+=item feature
+
+=item value
+
+=back
+
 =head2 feature_set
 
 Implemented by C<DBGp::Client::Response::FeatureSet>. See also

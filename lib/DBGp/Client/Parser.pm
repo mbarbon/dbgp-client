@@ -29,6 +29,7 @@ BEGIN {
         'breakpoint_remove' => 'DBGp::Client::Response::BreakpointRemove',
         'breakpoint_list'   => 'DBGp::Client::Response::BreakpointList',
         'feature_set'       => 'DBGp::Client::Response::FeatureSet',
+        'feature_get'       => 'DBGp::Client::Response::FeatureGet',
     );
 
     my $load = join "\n", map "require $_;", values %response_map;

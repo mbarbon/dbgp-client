@@ -12,6 +12,7 @@ lib/DBGp/Client/Response/ContextGet.pm
 lib/DBGp/Client/Response/ContextNames.pm
 lib/DBGp/Client/Response/Error.pm
 lib/DBGp/Client/Response/Eval.pm
+lib/DBGp/Client/Response/FeatureGet.pm
 lib/DBGp/Client/Response/FeatureSet.pm
 lib/DBGp/Client/Response/Init.pm
 lib/DBGp/Client/Response/Property.pm
