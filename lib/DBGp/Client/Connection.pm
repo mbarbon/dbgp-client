@@ -95,6 +95,8 @@ sub send_command {
     $self->{stream}->put_line($command, '-i', ++$self->{sequence}, @args);
     my $res = DBGp::Client::Parser::parse($self->{stream}->get_line);
 
+    # TODO <stream> and <notify> responses
+
     die 'Mismatched transaction IDs: got ', $res->transaction_id,
             ' expected ', $self->{sequence}
         if $res && $res->transaction_id != $self->{sequence};
