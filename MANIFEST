@@ -4,6 +4,7 @@ lib/DBGp/Client/Connection.pm
 lib/DBGp/Client/Listener.pm
 lib/DBGp/Client/Parser.pm
 lib/DBGp/Client/Response.pod
+lib/DBGp/Client/Response/Break.pm
 lib/DBGp/Client/Response/Breakpoint.pm
 lib/DBGp/Client/Response/BreakpointGetUpdateRemove.pm
 lib/DBGp/Client/Response/BreakpointList.pm
@@ -47,4 +48,5 @@ t/255_parse_typemap.t
 t/260_parse_properties.t
 t/265_parse_source.t
 t/270_parse_redirects.t
+t/275_parse_break.t
 t/lib/Test.pm

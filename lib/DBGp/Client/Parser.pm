@@ -40,6 +40,7 @@ BEGIN {
         'stdout'            => 'DBGp::Client::Response::Redirect',
         'stderr'            => 'DBGp::Client::Response::Redirect',
         'stdin'             => 'DBGp::Client::Response::Redirect',
+        'break'             => 'DBGp::Client::Response::Break',
     );
 
     my $load = join "\n", map "require $_;", values %response_map;

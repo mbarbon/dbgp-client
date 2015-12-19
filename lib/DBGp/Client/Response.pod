@@ -395,6 +395,20 @@ Accessors:
 
 =back
 
+=head2 break
+
+Implemented by C<DBGp::Client::Response::Break>. See also
+L<break|http://xdebug.org/docs-dbgp.php#break> in the
+DBGp spec.
+
+Accessors:
+
+=over 4
+
+=item success
+
+=back
+
 =cut
 
 # TODO: eval
