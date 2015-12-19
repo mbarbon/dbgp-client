@@ -23,6 +23,8 @@ BEGIN {
         'stack_depth'       => 'DBGp::Client::Response::StackDepth',
         'stack_get'         => 'DBGp::Client::Response::StackGet',
         'eval'              => 'DBGp::Client::Response::Eval',
+        'expr'              => 'DBGp::Client::Response::Eval',
+        'exec'              => 'DBGp::Client::Response::Eval',
         'typemap_get'       => 'DBGp::Client::Response::Typemap',
         'context_names'     => 'DBGp::Client::Response::ContextNames',
         'context_get'       => 'DBGp::Client::Response::ContextGet',

@@ -409,7 +409,7 @@ Accessors:
 
 =back
 
-=head2 eval
+=head2 eval, expr, exec
 
 Implemented by C<DBGp::Client::Response::Eval>. See also
 L<eval|http://xdebug.org/docs-dbgp.php#eval> in the
