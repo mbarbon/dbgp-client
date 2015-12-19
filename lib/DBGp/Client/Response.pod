@@ -427,6 +427,24 @@ An optional L</property> object (see below).
 
 =back
 
+=head2 interact
+
+Implemented by C<DBGp::Client::Response::Interact>. See also
+L<interact - interactive shell|http://xdebug.org/docs-dbgp.php#interact-interactive-shell> in the
+DBGp spec.
+
+Accessors:
+
+=over 4
+
+=item status
+
+=item more
+
+=item prompt
+
+=back
+
 =head1 OTHER OBJECTS
 
 Lists other objects that are part of the response object structure but
