@@ -380,6 +380,21 @@ Accessors:
 
 =back
 
+=head2 stdin, stdout, stderr
+
+Implemented by C<DBGp::Client::Response::Redirect>. See also
+L<stdout, stderr|http://xdebug.org/docs-dbgp.php#stdout-stderr> and
+L<stdin|http://xdebug.org/docs-dbgp.php#stdin> in the
+DBGp spec.
+
+Accessors:
+
+=over 4
+
+=item success
+
+=back
+
 =cut
 
 # TODO: eval

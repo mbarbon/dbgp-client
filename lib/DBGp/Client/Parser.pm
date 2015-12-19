@@ -37,6 +37,9 @@ BEGIN {
         'property_value'    => 'DBGp::Client::Response::PropertyValue',
         'property_set'      => 'DBGp::Client::Response::PropertySet',
         'source'            => 'DBGp::Client::Response::Source',
+        'stdout'            => 'DBGp::Client::Response::Redirect',
+        'stderr'            => 'DBGp::Client::Response::Redirect',
+        'stdin'             => 'DBGp::Client::Response::Redirect',
     );
 
     my $load = join "\n", map "require $_;", values %response_map;
