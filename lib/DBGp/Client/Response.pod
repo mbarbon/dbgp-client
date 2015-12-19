@@ -316,6 +316,54 @@ An array of C<type> objects; each object has the following attributes:
 
 =back
 
+=head2 property_get
+
+Implemented by C<DBGp::Client::Response::PropertyGet>. See also
+L<property_get, property_set, property_value|http://xdebug.org/docs-dbgp.php#property-get-property-set-property-value> in the
+DBGp spec.
+
+Accessors:
+
+=over 4
+
+=item property
+
+A L</property> object (see below).
+
+=back
+
+=head2 property_set
+
+Implemented by C<DBGp::Client::Response::PropertySet>. See also
+L<property_get, property_set, property_value|http://xdebug.org/docs-dbgp.php#property-get-property-set-property-value> in the
+DBGp spec.
+
+Accessors:
+
+=over 4
+
+=item success
+
+=back
+
+=head2 property_value
+
+Implemented by C<DBGp::Client::Response::PropertyValue>. See also
+L<property_get, property_set, property_value|http://xdebug.org/docs-dbgp.php#property-get-property-set-property-value> in the
+DBGp spec.
+
+Accessors:
+
+=over 4
+
+=item size
+
+=item value
+
+Decoded value string.
+
+=back
+
 =cut
 
 # TODO: eval

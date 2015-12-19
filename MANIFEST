@@ -16,6 +16,9 @@ lib/DBGp/Client/Response/FeatureGet.pm
 lib/DBGp/Client/Response/FeatureSet.pm
 lib/DBGp/Client/Response/Init.pm
 lib/DBGp/Client/Response/Property.pm
+lib/DBGp/Client/Response/PropertyGet.pm
+lib/DBGp/Client/Response/PropertySet.pm
+lib/DBGp/Client/Response/PropertyValue.pm
 lib/DBGp/Client/Response/Simple.pm
 lib/DBGp/Client/Response/StackDepth.pm
 lib/DBGp/Client/Response/StackGet.pm
@@ -39,4 +42,5 @@ t/232_parse_stack_depth.t
 t/240_parse_breakpoint_change.t
 t/245_parse_breakpoint_list.t
 t/255_parse_typemap.t
+t/260_parse_properties.t
 t/lib/Test.pm
