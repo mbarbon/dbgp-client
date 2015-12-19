@@ -218,9 +218,105 @@ Accessors:
 
 =back
 
-=cut
+=head2 stack_get
 
-# TODO: stack_get, context_names, context_get, typemap_get
+Implemented by C<DBGp::Client::Response::StackGet>. See also
+L<stack_get|http://xdebug.org/docs-dbgp.php#stack-get> in the
+DBGp spec.
+
+Accessors:
+
+=over 4
+
+=item frames
+
+An array of C<frame> objects; each object has the following attributes:
+
+=over 4
+
+=item level
+
+=item type
+
+=item filename
+
+=item where
+
+=item lineno
+
+=back
+
+=back
+
+=head2 context_names
+
+Implemented by C<DBGp::Client::Response::ContextNames>. See also
+L<context_names|http://xdebug.org/docs-dbgp.php#context-names> in the
+DBGp spec.
+
+Accessors:
+
+=over 4
+
+=item contexts
+
+An array of C<context> objects; each object has the following attributes:
+
+=over 4
+
+=item name
+
+=item id
+
+=back
+
+=back
+
+=head2 context_get
+
+Implemented by C<DBGp::Client::Response::ContextGet>. See also
+L<context_get|http://xdebug.org/docs-dbgp.php#context-get> in the
+DBGp spec.
+
+Accessors:
+
+=over 4
+
+=item context_id
+
+=item values
+
+An array of L</property> objects (see below).
+
+=back
+
+=head2 typemap_get
+
+Implemented by C<DBGp::Client::Response::Typemap>. See also
+L<typemap_get|http://xdebug.org/docs-dbgp.php#typemap-get> in the
+DBGp spec.
+
+Accessors:
+
+=over 4
+
+=item types
+
+An array of C<type> objects; each object has the following attributes:
+
+=over 4
+
+=item type
+
+=item name
+
+=item xsi_type
+
+=back
+
+=back
+
+=cut
 
 # TODO: eval
 
