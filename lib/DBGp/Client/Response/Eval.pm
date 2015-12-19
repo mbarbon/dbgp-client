@@ -11,8 +11,10 @@ __PACKAGE__->make_attrib_accessors(qw(
 ));
 
 sub result {
-    return bless DBGp::Client::Parser::_node($_[0], 'property'),
-                 'DBGp::Client::Response::Property';
+    my $property = DBGp::Client::Parser::_node($_[0], 'property');
+
+    return undef unless defined $property;
+    return bless $property, 'DBGp::Client::Response::Property';
 }
 
 1;

@@ -30,4 +30,17 @@ EOT
     },
 );
 
+dbgp_response_cmp(<<'EOT'
+<?xml version="1.0" encoding="UTF-8" ?>
+<response xmlns="urn:debugger_protocol_v1" xmlns:xdebug="http://xdebug.org/dbgp/xdebug" command="eval"
+                         transaction_id="25" />
+EOT
+    , {
+        transaction_id  => '25',
+        command         => 'eval',
+        success         => undef,
+        result          => undef,
+    },
+);
+
 done_testing();

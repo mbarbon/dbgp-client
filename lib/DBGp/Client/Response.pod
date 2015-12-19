@@ -409,9 +409,23 @@ Accessors:
 
 =back
 
-=cut
+=head2 eval
 
-# TODO: eval
+Implemented by C<DBGp::Client::Response::Eval>. See also
+L<eval|http://xdebug.org/docs-dbgp.php#eval> in the
+DBGp spec.
+
+Accessors:
+
+=over 4
+
+=item success
+
+=item result
+
+An optional L</property> object (see below).
+
+=back
 
 =head1 OTHER OBJECTS
 
