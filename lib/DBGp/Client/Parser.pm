@@ -20,6 +20,7 @@ BEGIN {
         'step_out'          => 'DBGp::Client::Response::Step',
         'detach'            => 'DBGp::Client::Response::Step',
         'stop'              => 'DBGp::Client::Response::Step',
+        'stack_depth'       => 'DBGp::Client::Response::StackDepth',
         'stack_get'         => 'DBGp::Client::Response::StackGet',
         'eval'              => 'DBGp::Client::Response::Eval',
         'typemap_get'       => 'DBGp::Client::Response::Typemap',

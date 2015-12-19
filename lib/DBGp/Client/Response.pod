@@ -204,6 +204,20 @@ An array of L</breakpoint> objects (see below).
 
 =back
 
+=head2 stack_depth
+
+Implemented by C<DBGp::Client::Response::StackDepth>. See also
+L<stack_depth|http://xdebug.org/docs-dbgp.php#stack-depth> in the
+DBGp spec.
+
+Accessors:
+
+=over 4
+
+=item depth
+
+=back
+
 =cut
 
 # TODO: stack_get, context_names, context_get, typemap_get
