@@ -66,6 +66,22 @@ Accessors:
 
 =back
 
+=head2 status
+
+Implemented by C<DBGp::Client::Response::Step>. See also
+L<status|http://xdebug.org/docs-dbgp.php#status> in the
+DBGp spec.
+
+Accessors:
+
+=over 4
+
+=item reason
+
+=item status
+
+=back
+
 =head2 feature_get
 
 Implemented by C<DBGp::Client::Response::FeatureGet>. See also

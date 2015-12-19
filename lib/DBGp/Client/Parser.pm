@@ -14,6 +14,7 @@ my $parser = XML::Parser->new(Style => 'XML::Parser::EasyTree');
 my %response_map;
 BEGIN {
     %response_map = (
+        'status'            => 'DBGp::Client::Response::Step',
         'step_into'         => 'DBGp::Client::Response::Step',
         'step_over'         => 'DBGp::Client::Response::Step',
         'run'               => 'DBGp::Client::Response::Step',

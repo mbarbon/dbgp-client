@@ -37,6 +37,7 @@ t/001_load.t
 t/200_parse_init.t
 t/205_parse_error.t
 t/207_parse_feature.t
+t/210_parse_status.t
 t/215_parse_step.t
 t/220_parse_context_names.t
 t/225_parse_context_get.t
