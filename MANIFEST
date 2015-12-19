@@ -20,6 +20,7 @@ lib/DBGp/Client/Response/PropertyGet.pm
 lib/DBGp/Client/Response/PropertySet.pm
 lib/DBGp/Client/Response/PropertyValue.pm
 lib/DBGp/Client/Response/Simple.pm
+lib/DBGp/Client/Response/Source.pm
 lib/DBGp/Client/Response/StackDepth.pm
 lib/DBGp/Client/Response/StackGet.pm
 lib/DBGp/Client/Response/Step.pm
@@ -43,4 +44,5 @@ t/240_parse_breakpoint_change.t
 t/245_parse_breakpoint_list.t
 t/255_parse_typemap.t
 t/260_parse_properties.t
+t/265_parse_source.t
 t/lib/Test.pm

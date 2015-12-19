@@ -364,6 +364,22 @@ Decoded value string.
 
 =back
 
+=head2 source
+
+Implemented by C<DBGp::Client::Response::Source>. See also
+L<source|http://xdebug.org/docs-dbgp.php#source> in the
+DBGp spec.
+
+Accessors:
+
+=over 4
+
+=item success
+
+=item source
+
+=back
+
 =cut
 
 # TODO: eval
