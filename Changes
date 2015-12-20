@@ -1,5 +1,11 @@
 Revision history for DBGp-Client
 
+0.06      2015-12-20 15:57:50 CET
+
+    - Implement parsing for all required DBGp command and some of the
+      optional ones
+    - Document all parsed responses
+
 0.05      2015-12-15 08:25:49 CET
 
     - Fix for the case when XML::Parser::Style::EasyTree is installed
