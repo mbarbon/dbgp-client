@@ -45,7 +45,7 @@ sub put_line {
     my ($self, @items) = @_;
     my $cmd = join(" ", @items);
 
-    print { $self->{socket} } $cmd, "\x00";
+    syswrite $self->{socket}, $cmd . "\x00";
 }
 
 1;
