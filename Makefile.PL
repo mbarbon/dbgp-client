@@ -14,7 +14,7 @@ if ($mm_ver =~ /_/) {
 }
 
 my %test_requires = (
-    'Test::DBGp'        => 0,
+    'Test::DBGp'        => 0.04,
 );
 
 WriteMakefile(

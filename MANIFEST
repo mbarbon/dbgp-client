@@ -34,6 +34,7 @@ MANIFEST
 META.yml
 META.json
 t/001_load.t
+t/050_basic_client.t
 t/200_parse_init.t
 t/205_parse_error.t
 t/207_parse_feature.t
@@ -53,3 +54,4 @@ t/270_parse_redirects.t
 t/275_parse_break.t
 t/280_parse_interact.t
 t/lib/Test.pm
+t/scripts/fake.pl
