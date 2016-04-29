@@ -102,6 +102,9 @@ read and parse the initialization message.
 sub accept {
     my ($self) = @_;
     my $sock = $self->{socket}->accept;
+
+    return undef if !$sock;
+
     my $conn = DBGp::Client::Connection->new(socket => $sock);
 
     $conn->parse_init;
