@@ -20,7 +20,7 @@ sub get_line {
     my $len_end = index($$buffer, "\x00");
     while ($len_end == -1) {
         return undef
-            if read($self->{socket}, $$buffer, 100, length($$buffer)) == 0;
+            if read($self->{socket}, $$buffer, 2, length($$buffer)) == 0;
 
         $len_end = index($$buffer, "\x00");
     }
