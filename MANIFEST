@@ -1,5 +1,7 @@
 Changes
 lib/DBGp/Client.pm
+lib/DBGp/Client/AsyncConnection.pm
+lib/DBGp/Client/AsyncStream.pm
 lib/DBGp/Client/Connection.pm
 lib/DBGp/Client/Listener.pm
 lib/DBGp/Client/Parser.pm
@@ -35,6 +37,7 @@ META.yml
 META.json
 t/001_load.t
 t/050_basic_client.t
+t/055_async_client.t
 t/200_parse_init.t
 t/205_parse_error.t
 t/207_parse_feature.t
