@@ -28,5 +28,6 @@ sub make_attrib_accessors {
 }
 
 sub is_error { '0' }
+sub is_internal_error { '0' }
 
 1;

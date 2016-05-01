@@ -16,7 +16,9 @@ All responses, except for L</init> have C<transaction_id> and
 C<command> accessors.
 
 All response objects have an C<is_error> accessor, which only returns
-true for L<error> responses.
+true for L<error> responses; C<is_internal_error> returns true for
+error responses coming from the debugger (for example for a broken
+connection).
 
 =head1 RESPONSES
 

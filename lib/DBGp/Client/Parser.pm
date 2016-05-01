@@ -8,6 +8,7 @@ use XML::Parser::EasyTree;
 
 use DBGp::Client::Response::Init;
 use DBGp::Client::Response::Error;
+use DBGp::Client::Response::InternalError;
 
 my $parser = XML::Parser->new(Style => 'XML::Parser::EasyTree');
 

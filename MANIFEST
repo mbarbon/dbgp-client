@@ -19,6 +19,7 @@ lib/DBGp/Client/Response/FeatureGet.pm
 lib/DBGp/Client/Response/FeatureSet.pm
 lib/DBGp/Client/Response/Init.pm
 lib/DBGp/Client/Response/Interact.pm
+lib/DBGp/Client/Response/InternalError.pm
 lib/DBGp/Client/Response/Property.pm
 lib/DBGp/Client/Response/PropertyGet.pm
 lib/DBGp/Client/Response/PropertySet.pm
