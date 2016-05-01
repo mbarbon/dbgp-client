@@ -35,6 +35,23 @@ sub send_command {
 
 sub add_data { $_[0]->{stream}->add_data($_[1]) }
 
+sub closed {
+    my ($self) = @_;
+
+    for my $transaction_id (keys %{$self->{commands}}) {
+        my $error = bless {
+            transaction_id  => $transaction_id,
+            code            => 999,
+            apperr          => 1,
+            message         => "Broken connection",
+        }, 'DBGp::Client::Response::InternalError';
+
+        eval {
+            delete($self->{commands}{$transaction_id})->($error);
+        };
+    }
+}
+
 sub _receive_line {
     my ($self, $line) = @_;
 
