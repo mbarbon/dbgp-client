@@ -17,11 +17,11 @@ DBGp::Client - simple client for the DBGp debugger protocol
         # but has side-effects in the condition
         $command = 'require Data::Dumper; print Data::Dumper::Dumper($var);';
         $res = $client->send_command(
-            'breakpoiint_set', '-t', 'conditional',
-                               '-f', 'file:///path/to/file.pl',
-                               '-n', $line,
-                               '--',
-                               encode_base64("$command; 0"),
+            'breakpoint_set', '-t', 'conditional',
+                              '-f', 'file:///path/to/file.pl',
+                              '-n', $line,
+                              '--',
+                              encode_base64("$command; 0"),
         );
         die $res->message if $res->is_error;
 
