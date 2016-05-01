@@ -32,11 +32,8 @@ my ($PID, $CHILD_IN, $CHILD_OUT, $CHILD_ERR);
 sub dbgp_run_fake {
     my $port = dbgp_listening_port();
     my $path = dbgp_listening_path();
-    use IPC::Open2;
-    # $PID = IPC::Open3::open3(
-    #     $CHILD_IN, $CHILD_OUT, $CHILD_ERR,
-    $PID = IPC::Open2::open2(
-        $CHILD_OUT, $CHILD_IN,
+    $PID = IPC::Open3::open3(
+        $CHILD_IN, $CHILD_OUT, $CHILD_ERR,
         $^X, 't/scripts/fake.pl', $port, $path,
     );
 }
