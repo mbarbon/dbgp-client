@@ -53,7 +53,7 @@ Mattia Barbon <mbarbon@cpan.org>
 
 =head1 LICENSE
 
-Copyright (c) 2015 Mattia Barbon. All rights reserved.
+Copyright (c) 2015-2016 Mattia Barbon. All rights reserved.
 
 This library is free software; you can redistribute it and/or modify it
 under the same terms as Perl itself.
