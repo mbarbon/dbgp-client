@@ -16,22 +16,33 @@ die "Did not receive any connection from the fake debugger: ", $LISTEN->error
 $socket->blocking(0);
 
 my $conn = DBGp::Client::AsyncConnection->new(socket => $socket);
+my $output = '';
+my @notifications;
+
+$conn->on_stream(sub { $output .= $_[0]->content });
+$conn->on_notification(sub { push @notifications, $_[0]->name });
 
 pull_data_while($socket, sub { !$conn->init });
 
 is($conn->init->language, 'Perl');
+is($output, "");
+is_deeply(\@notifications, []);
 
 my $res1;
 $conn->send_command(sub { $res1 = $_[0] }, 'stack_depth');
 pull_data_while($socket, sub { !$res1 });
 
 is($res1->transaction_id, 1);
+is($output, "Step 1\n");
+is_deeply(\@notifications, []);
 
 my $res2;
 $conn->send_command(sub { $res2 = $_[0] }, 'stack_depth');
 pull_data_while($socket, sub { !$res2 });
 
 is($res2->transaction_id, 2);
+is($output, "Step 1\n");
+is_deeply(\@notifications, ['stdin']);
 
 done_testing();
 

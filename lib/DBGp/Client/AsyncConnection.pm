@@ -12,10 +12,12 @@ sub new {
     my $stream = DBGp::Client::AsyncStream->new(socket => $args{socket});
 
     my $self = my $weak_self = bless {
-        stream   => $stream,
-        sequence => 0,
-        init     => undef,
-        commands => {},
+        stream          => $stream,
+        sequence        => 0,
+        init            => undef,
+        commands        => {},
+        on_stream       => undef,
+        on_notification => undef,
     }, $class;
     Scalar::Util::weaken($weak_self);
     $stream->on_line(sub { $weak_self->_receive_line(@_) });
@@ -59,13 +61,25 @@ sub _receive_line {
         $self->{init} = DBGp::Client::Parser::parse($line);
     } else {
         my $res = DBGp::Client::Parser::parse($line);
-        my $callback = delete $self->{commands}{$res->transaction_id};
 
-        die 'Mismatched transaction IDs: ', $res->transaction_id
-            unless $callback;
+        if ($res->is_oob) {
+            if ($res->is_stream && $self->{on_stream}) {
+                $self->{on_stream}->($res);
+            } elsif ($res->is_notification && $self->{on_notification}) {
+                $self->{on_notification}->($res);
+            }
+        } else {
+            my $callback = delete $self->{commands}{$res->transaction_id};
 
-        $callback->($res);
+            die 'Mismatched transaction IDs: ', $res->transaction_id
+                unless $callback;
+
+            $callback->($res);
+        }
     }
 }
+
+sub on_stream { $_[0]->{on_stream} = $_[1] }
+sub on_notification { $_[0]->{on_notification} = $_[1] }
 
 1;

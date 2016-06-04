@@ -20,6 +20,7 @@ lib/DBGp/Client/Response/FeatureSet.pm
 lib/DBGp/Client/Response/Init.pm
 lib/DBGp/Client/Response/Interact.pm
 lib/DBGp/Client/Response/InternalError.pm
+lib/DBGp/Client/Response/Notification.pm
 lib/DBGp/Client/Response/Property.pm
 lib/DBGp/Client/Response/PropertyGet.pm
 lib/DBGp/Client/Response/PropertySet.pm
@@ -30,6 +31,7 @@ lib/DBGp/Client/Response/Source.pm
 lib/DBGp/Client/Response/StackDepth.pm
 lib/DBGp/Client/Response/StackGet.pm
 lib/DBGp/Client/Response/Step.pm
+lib/DBGp/Client/Response/Stream.pm
 lib/DBGp/Client/Response/Typemap.pm
 lib/DBGp/Client/Stream.pm
 Makefile.PL
@@ -57,5 +59,6 @@ t/265_parse_source.t
 t/270_parse_redirects.t
 t/275_parse_break.t
 t/280_parse_interact.t
+t/285_parse_oob_notifications.t
 t/lib/Test.pm
 t/scripts/fake.pl

@@ -12,8 +12,8 @@ for the meaning of the various values.
 Unless specified, the values returned by the various accessors is the
 raw value provided by the debugger.
 
-All responses, except for L</init> have C<transaction_id> and
-C<command> accessors.
+All responses, except for L</init>, L</stream> and L<notify>
+have C<transaction_id> and C<command> accessors.
 
 All response objects have an C<is_error> accessor, which only returns
 true for L<error> responses; C<is_internal_error> returns true for
@@ -460,6 +460,36 @@ Accessors:
 =item more
 
 =item prompt
+
+=back
+
+=head2 stream
+
+Implemented by C<DBGp::Client::Response::Stream>.
+
+Accessors:
+
+=over 4
+
+=item type
+
+=item content
+
+decoded content
+
+=back
+
+=head2 notify
+
+Implemented by C<DBGp::Client::Response::Notification>. See also
+L<Notifications|https://xdebug.org/docs-dbgp.php#id72> in the
+DBGp spec.
+
+Accessors:
+
+=over 4
+
+=item name
 
 =back
 

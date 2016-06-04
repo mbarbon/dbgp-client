@@ -39,6 +39,14 @@ my $res1 = <<'EOT';
           transaction_id="1"/>
 EOT
 
+my $output = <<'EOT';
+<stream type="stdout" encoding="base64">U3RlcCAxCg==</stream>
+EOT
+
+my $notify = <<'EOT';
+<notify name="stdin"></notify>
+EOT
+
 my $res2 = <<'EOT';
 <response command="stack_depth"
           depth="7"
@@ -49,10 +57,12 @@ syswrite $sock, length($init) . "\x00" . $init . "\x00";
 
 eatline();
 
+syswrite $sock, length($output) . "\x00" . $output . "\x00";
 syswrite $sock, length($res1) . "\x00" . $res1 . "\x00";
 
 eatline();
 
+syswrite $sock, length($notify) . "\x00" . $notify . "\x00";
 syswrite $sock, length($res2) . "\x00" . $res2 . "\x00";
 
 exit 0;

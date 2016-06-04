@@ -9,6 +9,8 @@ use XML::Parser::EasyTree;
 use DBGp::Client::Response::Init;
 use DBGp::Client::Response::Error;
 use DBGp::Client::Response::InternalError;
+use DBGp::Client::Response::Notification;
+use DBGp::Client::Response::Stream;
 
 my $parser = XML::Parser->new(Style => 'XML::Parser::EasyTree');
 
@@ -103,6 +105,10 @@ sub parse {
 
             die "Unknown command '$cmd' " . Data::Dumper::Dumper($root);
         }
+    } elsif ($root->{name} eq 'stream') {
+        return bless $root, 'DBGp::Client::Response::Stream';
+    } elsif ($root->{name} eq 'notify') {
+        return bless $root, 'DBGp::Client::Response::Notification';
     } else {
         require Data::Dumper;
 

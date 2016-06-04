@@ -49,9 +49,11 @@ sub new {
     my ($class, %args) = @_;
     my $stream = DBGp::Client::Stream->new(socket => $args{socket});
     my $self = bless {
-        stream      => $stream,
-        sequence    => 0,
-        init        => undef,
+        stream          => $stream,
+        sequence        => 0,
+        init            => undef,
+        on_stream       => undef,
+        on_notification => undef,
     }, $class;
 
     return $self;
@@ -93,16 +95,48 @@ sub send_command {
     my ($self, $command, @args) = @_;
 
     $self->{stream}->put_line($command, '-i', ++$self->{sequence}, @args);
-    my $res = DBGp::Client::Parser::parse($self->{stream}->get_line);
 
-    # TODO <stream> and <notify> responses
+    for (;;) {
+        my $res = DBGp::Client::Parser::parse($self->{stream}->get_line);
 
-    die 'Mismatched transaction IDs: got ', $res->transaction_id,
-            ' expected ', $self->{sequence}
-        if $res && $res->transaction_id != $self->{sequence};
+        if ($res->is_oob) {
+            if ($res->is_stream && $self->{on_stream}) {
+                $self->{on_stream}->($res);
+            } elsif ($res->is_notification && $self->{on_notification}) {
+                $self->{on_notification}->($res);
+            }
 
-    return $res;
+            next;
+        } else {
+            die 'Mismatched transaction IDs: got ', $res->transaction_id,
+                    ' expected ', $self->{sequence}
+                if $res && $res->transaction_id != $self->{sequence};
+
+            return $res;
+        }
+    }
 }
+
+=head2 on_stream
+
+    $connection->on_stream(sub { ... });
+
+Set a callback for receiving redirected program output.
+
+The callback receives a L<DBGp::Client::Response/stream> object.
+
+=head2 on_notification
+
+    $connection->on_notification(sub { ... });
+
+Set a callback for receiving notifications.
+
+The callback receives a L<DBGp::Client::Response/notify> object.
+
+=cut
+
+sub on_stream { $_[0]->{on_stream} = $_[1] }
+sub on_notification { $_[0]->{on_notification} = $_[1] }
 
 1;
 

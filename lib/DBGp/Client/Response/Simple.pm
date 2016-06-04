@@ -29,5 +29,8 @@ sub make_attrib_accessors {
 
 sub is_error { '0' }
 sub is_internal_error { '0' }
+sub is_oob { '0' }
+sub is_stream { '0' }
+sub is_notification { '0' }
 
 1;
