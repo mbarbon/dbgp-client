@@ -1,5 +1,9 @@
 Revision history for DBGp-Client
 
+0.09     2016-06-05 13:26:00 CEST
+
+    - Add support for stream and notification messages
+
 0.08     2016-05-01 19:43:43 CEST
 
     - Changes to support AnyEvent client
