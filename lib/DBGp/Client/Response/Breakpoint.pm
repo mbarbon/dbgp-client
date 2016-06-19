@@ -7,7 +7,7 @@ use parent qw(DBGp::Client::Response::Simple);
 
 __PACKAGE__->make_attrib_accessors(qw(
     id type state filename lineno function exception
-    hit_value hit_condition hit_count
+    hit_value hit_condition hit_count temporary
 ));
 
 sub expression {

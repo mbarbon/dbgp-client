@@ -27,6 +27,7 @@ EOT
                 hit_condition => undef,
                 exception     => undef,
                 expression    => 'require Data::Dumper; print Data::Dumper::Dumper($env); 0',
+                temporary     => 0,
             },
         ],
     },
@@ -56,6 +57,7 @@ EOT
             hit_condition => undef,
             exception     => undef,
             expression    => '',
+            temporary     => 0,
         },
     },
 );

@@ -530,6 +530,8 @@ Accessors:
 
 =item expression
 
+=item temporary
+
 =back
 
 =head2 property
