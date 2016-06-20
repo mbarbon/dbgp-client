@@ -1,5 +1,9 @@
 Revision history for DBGp-Client
 
+0.10     2016-06-20 19:29:47 CEST
+
+    - Add accessor for the 'temporary' state of breakpoints
+
 0.09     2016-06-05 13:26:00 CEST
 
     - Add support for stream and notification messages
