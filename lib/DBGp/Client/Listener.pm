@@ -38,6 +38,9 @@ use DBGp::Client::Connection;
 Possible options are C<port> to specify a TCP port, and C<path> to
 specify the path for an Unix-domain socket.
 
+For Unix-domain socket, passing C<mode> performs an additional
+C<chmod> call before starting to listen for connections.
+
 =cut
 
 sub new {
@@ -45,6 +48,7 @@ sub new {
     my $self = bless {
         port    => $args{port},
         path    => $args{path},
+        mode    => $args{mode},
         socket  => undef,
     }, $class;
 
@@ -80,9 +84,16 @@ sub listen {
         }
 
         $self->{socket} = IO::Socket::UNIX->new(
-            Listen    => 1,
             Local     => $self->{path},
         );
+        if ($self->{socket} && defined $self->{mode}) {
+            chmod $self->{mode}, $self->{path}
+                or $self->{socket} = undef;
+        }
+        if ($self->{socket}) {
+            $self->{socket}->listen(1)
+                or $self->{socket} = undef;
+        }
     }
 
     die "Unable to start listening: $!" unless $self->{socket};
