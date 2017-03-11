@@ -6,8 +6,6 @@ use warnings;
 # with both what the spec says and what Xdebug does
 use parent qw(DBGp::Client::Response::Property);
 
-use MIME::Base64 qw(decode_base64);
-
 __PACKAGE__->make_attrib_accessors(qw(
     transaction_id command
 ));

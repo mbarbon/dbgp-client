@@ -6,6 +6,8 @@ use warnings;
 use XML::Parser;
 use XML::Parser::EasyTree;
 
+use MIME::Base64 qw(decode_base64);
+
 use DBGp::Client::Response::Init;
 use DBGp::Client::Response::Error;
 use DBGp::Client::Response::InternalError;
@@ -78,6 +80,14 @@ sub _text {
     }
 
     return $text;
+}
+
+sub _decode {
+    my ($text, $encoding) = @_;
+    $encoding ||= 'none';
+    return $encoding eq 'base64' ? decode_base64($text) :
+           $encoding eq 'none'   ? $text :
+                                   die "Unsupported encoding '$encoding'";
 }
 
 sub parse {

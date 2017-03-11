@@ -4,8 +4,6 @@ use strict;
 use warnings;
 use parent qw(DBGp::Client::Response::Simple);
 
-use MIME::Base64 qw(decode_base64);
-
 __PACKAGE__->make_attrib_accessors(qw(
     name fullname constant type children address pagesize page classname key facet size
 ));
@@ -22,17 +20,13 @@ sub value {
         return undef unless $text =~ /\S/;
 
         my $encoding = $_[0]->{attrib}{encoding};
-        die "Only supports base64" unless $encoding eq 'base64';
-
-        return decode_base64($text) ;
+        return DBGp::Client::Parser::_decode($text, $encoding);
     }
 
     if (my $encoding = $value->{attrib}{encoding}) {
-        die "Only supports base64" unless $encoding eq 'base64';
-
         my $text = DBGp::Client::Parser::_text($value);
 
-        return length($text) ? decode_base64($text) : undef;
+        return length($text) ? DBGp::Client::Parser::_decode($text, $encoding) : undef;
     }
 }
 
