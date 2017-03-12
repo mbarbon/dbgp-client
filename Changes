@@ -1,5 +1,9 @@
 Revision history for DBGp-Client
 
+0.12     2017-03-12 23:22:25 CET
+
+    - Assume encoding is 'none' by default, for compatibility with Xdebug
+
 0.11     2016-07-09 18:36:04 CEST
 
     - Optionally force permissions for Unix-domain sockets
